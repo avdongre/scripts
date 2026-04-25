@@ -35,3 +35,79 @@ rm -rf /home/ca114/*.pdf
 grep 'a' mary.txt
 ```
 
+```declarative
+For the following questions, write the command that would accomplish the given
+task. Each command is worth 5 marks.
+1. Show the last 10 lines of log.txt and add the output to archive.txt without
+overwriting its content.
+2. Show the number of lines in report.txt.
+3. Show the contents of data.txt and save only the lines containing the word
+‘success’ in a new file called success.txt.
+```
+```bash
+tail -10 log.txt >> archive.txt
+wc -l report.txt
+cat data.txt
+grep 'success' data.txt > success.txt
+```
+
+```declarative
+A user writes a shell script named check-file-exists.sh that takes a file path as a
+command-line argument and checks whether the file exists. If the file exists, the
+script prints a success message and exits with status 0; otherwise, it prints an error
+message and exits with status 1.
+```
+```bash
+if [ -e "$1" ]; then
+  echo "Success: File exists."
+  exit 0
+else
+  echo "Error: File does not exist."
+  exit 1
+fi
+```
+```declarative
+You are asked to write a shell script named procwatch.sh that continuously checks if
+a process (given as an argument) is running and prints a message if it is not found.
+```
+
+```bash
+PROCESS="$1"
+# Infinite loop to monitor the process
+while true; do
+  if pgrep -x "$PROCESS" > /dev/null; then
+    echo "Process '$PROCESS' is running."
+  else
+    echo "Alert: Process '$PROCESS' is NOT running!"
+  fi
+  sleep 5  # wait 5 seconds before checking again
+done
+```
+
+```declarative
+Modify the script so that it automatically stops monitoring after 5 checks, even if the process is still running.
+```
+
+```bash
+ROCESS="$1"
+COUNT=0
+MAX_CHECKS=5
+
+while [ $COUNT -lt $MAX_CHECKS ]; do
+  if pgrep -x "$PROCESS" > /dev/null; then
+    echo "Process '$PROCESS' is running."
+  else
+    echo "Alert: Process '$PROCESS' is NOT running!"
+  fi
+
+  COUNT=$((COUNT + 1))
+  sleep 5
+done
+
+echo "Monitoring stopped after $MAX_CHECKS checks."
+exit 0
+```
+### Write a single command to create report_1.txt, report_2.txt, …, report_10.txt.
+```bash
+touch report_{1..10}.txt
+```
