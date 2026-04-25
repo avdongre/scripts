@@ -136,3 +136,20 @@ do
 done < historical-figures.txt
 ```
 
+```bash
+In the password file (/etc/passwd), each line consists of seven colon-delimited fields
+in the following format: username:password:UID:GID:GECOS:directory:shell.
+Write a shell script which outputs to standard output, a list of usernames who doesn't
+use bash as their login shell.
+```
+
+```bash
+#!/bin/sh
+
+while IFS=: read -r username password uid gid gecos directory shell
+do
+    if [ "$shell" != "/bin/bash" ]; then
+        echo "$username"
+    fi
+done < /etc/passwd
+```
