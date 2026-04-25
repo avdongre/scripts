@@ -20,3 +20,18 @@ rm -rf /usr/share/*
 ```bash
 cat poem.txt | grep "Mary" | wc -l
 ```
+# AUGUST/RESIT EXAMINATIONS 2021/2022
+
+### Output a list of all regular files in the current working directory.
+```bash
+ls -p | grep -v /
+```
+### Remove all PDF files in /home/ca114-directory.
+```bash
+rm -rf /home/ca114/*.pdf
+```
+### Output each line of mary.txt which contains the word "a". 
+```bash
+grep 'a' mary.txt
+```
+
