@@ -153,3 +153,30 @@ do
     fi
 done < /etc/passwd
 ```
+
+### Write a script to calculate the sum of all the intergers from 1 to 100.
+```bash
+#!/bin/sh
+
+sum=0
+i=1
+
+while [ "$i" -le 100 ]
+do
+    sum=$((sum + i))
+    i=$((i + 1))
+done
+
+echo "$sum"
+```
+```bash
+Write a while loop to read a file named “logs.txt” line by line and print each line.
+```
+```bash
+#!/bin/sh
+
+while IFS= read -r line
+do
+    echo "$line"
+done < logs.txt
+```
