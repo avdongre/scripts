@@ -111,3 +111,28 @@ exit 0
 ```bash
 touch report_{1..10}.txt
 ```
+
+```declarative
+Given a file name “historical-figures.txt” with the following content:
+    Name,Year of Birth,Field
+    Isaac Newton,1643,Physics
+    Albert Einstein,1879,Physics
+    Marie Curie,1867,Chemistry
+    William Shakespeare,1564,Literature
+    Yuri Gagarin,1934,Astronautics
+    Pythagoras,570,Mathematics
+    John von Neumann,1903,Mathematics
+    Leonardo da Vinci,1452,Art
+    Charles Darwin,1809,Biology
+
+Write a command to output the names of all people born after 1800.
+```
+```bash
+while IFS=',' read -r name year field
+do
+    if [ "$year" -gt 1800 ]; then
+        echo "$name"
+    fi
+done < historical-figures.txt
+```
+
